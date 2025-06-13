@@ -31,9 +31,7 @@ app.get('/', (req, res) => {
 // ✅ Serve static files from 'public/'
 app.use(express.static(path.join(__dirname, 'public')));
 
-// ✅ Root route to serve login.html
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public','login.html'));
+
 
 
 // ✅ Connect to MongoDB Atlas

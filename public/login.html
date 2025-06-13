@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login & Registration Form</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+  </head>
+  <body>
+    
+
+    <header class="header">
+      <nav class="nav">
+        <a href="#" class="nav_logo">E-Shopping</a>
+        <div class="nav_buttons">
+          <button class="button" id="customer-form-open">Customer</button>
+          <button class="button" id="seller-form-open">Seller</button>
+        </div>
+      </nav>
+    </header>
+
+    <section class="home">
+      <div class="form_container">
+        <i class="uil uil-times form_close"></i>
+
+        <!-- Customer Login Form -->
+        <div class="form login_form">
+          <form action="#" id="customerLoginForm">
+            <h2>Customer Login</h2>
+            <div class="input_box">
+              <input type="email" name="email" placeholder="Enter your email" required />
+              <i class="uil uil-envelope-alt email"></i>
+            </div>
+            <div class="input_box">
+              <input type="password" name="password" placeholder="Enter your password" required />
+              <i class="uil uil-lock password"></i>
+              <i class="uil uil-eye-slash pw_hide"></i>
+            </div>
+            <div class="option_field">
+              <span class="checkbox">
+                <input type="checkbox" id="check" />
+                <label for="check">Remember me</label>
+              </span>
+              <a href="#" class="forgot_pw">Forgot password?</a>
+            </div>
+            <button class="button" type="submit">Login Now</button>
+            <div class="login_signup">Don't have an account? <a href="#" id="customer_signup">Signup</a></div>
+          </form>
+        </div>
+
+        
+        <!-- Customer Signup Form -->
+<div class="form customer_signup_form">
+  <form action="#" id="customerSignupForm">
+    <h2>Customer Signup</h2>
+
+    <div class="input_box">
+      <input type="text" name="username" placeholder="Enter your username" required />
+      <i class="uil uil-user"></i>
+    </div>
+
+    <div class="input_box">
+      <input type="email" name="email" placeholder="Enter your email" required />
+      <i class="uil uil-envelope-alt email"></i>
+    </div>
+
+    <div class="input_box">
+      <input type="password" name="password" placeholder="Create password" required />
+      <i class="uil uil-lock password"></i>
+      <i class="uil uil-eye-slash pw_hide"></i>
+    </div>
+
+    <div class="input_box">
+      <input type="password" name="confirmPassword" placeholder="Confirm password" required />
+      <i class="uil uil-lock password"></i>
+      <i class="uil uil-eye-slash pw_hide"></i>
+    </div>
+
+    <button class="button" type="submit">Signup Now</button>
+    <div class="login_signup">Already have an account? <a href="#" id="customer_login">Login</a></div>
+  </form>
+</div>
+
+
+        <!-- Seller Login Form -->
+        <div class="form seller_login_form">
+          <form action="#" id="sellerLoginForm">
+            <h2>Seller Login</h2>
+            <div class="input_box">
+              <input type="email" name="email" placeholder="Enter your email" required />
+              <i class="uil uil-envelope-alt email"></i>
+            </div>
+            <div class="input_box">
+              <input type="password" name="password" placeholder="Enter your password" required />
+              <i class="uil uil-lock password"></i>
+              <i class="uil uil-eye-slash pw_hide"></i>
+            </div>
+            <div class="option_field">
+              <span class="checkbox">
+                <input type="checkbox" id="seller_check" />
+                <label for="seller_check">Remember me</label>
+              </span>
+              <a href="#" class="forgot_pw">Forgot password?</a>
+            </div>
+            <button class="button" type="submit">Login Now</button>
+            <div class="login_signup">Don't have an account? <a href="#" id="seller_signup">Signup</a></div>
+          </form>
+        </div>
+
+        <!-- Seller Signup Form -->
+        <div class="form seller_signup_form">
+          <form action="#" id="sellerSignupForm">
+            <h2>Seller Registration</h2>
+
+            <h3 class="section-title">Business Information</h3>
+            <div class="input_box">
+              <input type="text" name="businessName" placeholder="Business Name" required />
+              <i class="uil uil-building"></i>
+            </div>
+            <div class="input_box">
+              <select name="businessType" class="form-select" required>
+                <option value="">Business Type</option>
+                <option value="retail">Retail</option>
+                <option value="wholesale">Wholesale</option>
+                <option value="manufacturer">Manufacturer</option>
+                <option value="service">Service Provider</option>
+              </select>
+              <i class="uil uil-store"></i>
+            </div>
+            <div class="input_box">
+              <input type="text" name="gstNumber" placeholder="GST Number" required />
+              <i class="uil uil-invoice"></i>
+            </div>
+            <div class="input_box">
+              <input type="text" name="tin" placeholder="Tax Identification Number" required />
+              <i class="uil uil-file-contract"></i>
+            </div>
+            <div class="input_box">
+              <input type="text" name="businessAddress" placeholder="Business Address" required />
+              <i class="uil uil-map-marker"></i>
+            </div>
+            <div class="input_box">
+              <input type="url" name="website" placeholder="Website URL" />
+              <i class="uil uil-globe"></i>
+            </div>
+            <div class="input_box">
+              <input type="text" name="industrySector" placeholder="Industry Sector" required />
+              <i class="uil uil-chart-bar"></i>
+            </div>
+            <div class="input_box">
+              <input type="text" name="annualRevenue" placeholder="Annual Revenue (USD)" />
+              <i class="uil uil-money-bill"></i>
+            </div>
+
+            <h3 class="section-title">Primary Contact</h3>
+            <div class="input_box">
+              <input type="text" name="contactFullName" placeholder="Full Name" required />
+              <i class="uil uil-user"></i>
+            </div>
+            <div class="input_box">
+              <input type="text" name="contactJobTitle" placeholder="Job Title" required />
+              <i class="uil uil-briefcase"></i>
+            </div>
+            <div class="input_box">
+              <input type="email" name="contactEmail" placeholder="Email" required />
+              <i class="uil uil-envelope-alt"></i>
+            </div>
+            <div class="input_box">
+              <input type="tel" name="contactPhone" placeholder="Phone Number" required />
+              <i class="uil uil-phone"></i>
+            </div>
+
+            <h3 class="section-title">Account Information</h3>
+            <div class="input_box">
+              <input type="text" name="username" placeholder="Username" required />
+              <i class="uil uil-user-circle"></i>
+            </div>
+            <div class="input_box">
+              <input type="password" name="password" placeholder="Password" required />
+              <i class="uil uil-lock password"></i>
+              <i class="uil uil-eye-slash pw_hide"></i>
+            </div>
+            <div class="input_box">
+              <input type="password" name="confirmPassword" placeholder="Confirm Password" required />
+              <i class="uil uil-lock password"></i>
+              <i class="uil uil-eye-slash pw_hide"></i>
+            </div>
+
+            <div class="agreement">
+              <input type="checkbox" id="terms" name="terms" required />
+              <label for="terms">I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></label>
+            </div>
+
+            <button class="button" type="submit">Register Now</button>
+            <div class="login_signup">Already have an account? <a href="#" id="seller_login">Login</a></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const customerSignupForm = document.getElementById("customerSignupForm");
+        const sellerSignupForm = document.getElementById("sellerSignupForm");
+
+        // Customer Signup Submission
+        customerSignupForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+const username = customerSignupForm.querySelector("input[name='username']").value;
+
+          const email = customerSignupForm.querySelector("input[name='email']").value;
+          const password = customerSignupForm.querySelector("input[name='password']").value;
+          const confirmPassword = customerSignupForm.querySelector("input[name='confirmPassword']").value;
+
+          if (password !== confirmPassword) {
+            alert("Passwords do not match.");
+            return;
+          }
+
+          try {
+            const response = await fetch("http://localhost:5000/api/customer/register", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ username, email, password }),
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+              alert("Customer registered successfully!");
+              customerSignupForm.reset();
+            } else {
+              alert(`Error: ${data.message || 'Registration failed.'}`);
+            }
+          } catch (err) {
+            alert("Error: Unable to connect to server.");
+          }
+        });
+
+        // Seller Signup Submission
+        sellerSignupForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          // Collect all inputs/selects with name attribute inside the seller form
+          const inputs = sellerSignupForm.querySelectorAll("input[name], select[name]");
+          const payload = {};
+
+          inputs.forEach((input) => {
+            payload[input.name] = input.value;
+          });
+
+          if (payload.password !== payload.confirmPassword) {
+            alert("Passwords do not match.");
+            return;
+          }
+
+          if (!sellerSignupForm.querySelector("input[name='terms']").checked) {
+            alert("You must agree to the Terms & Conditions and Privacy Policy.");
+            return;
+          }
+
+          try {
+            const response = await fetch("http://localhost:5000/api/business/register", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+              alert("Seller registered successfully!");
+              sellerSignupForm.reset();
+            } else {
+              alert(`Error: ${data.message || 'Registration failed.'}`);
+            }
+          } catch (err) {
+            alert("Error: Unable to connect to server.");
+          }
+        });
+      });
+    </script> -->
+    <script src="script.js"></script>
+  </body>
+</html>

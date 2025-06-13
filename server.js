@@ -19,18 +19,22 @@ const sellerRoutes = require('./backend/routes/sellerRoutes');
 app.use('/api/customer', customerRoutes);
 app.use('/api/business', sellerRoutes);
 
-// ✅ Serve all static files from public (including cozastore + login.html)
-app.use(express.static(path.join(__dirname, 'public')));
+// ✅ Serve static files from 'public/cozastore'
+app.use(express.static(path.join(__dirname, 'public','cozastore')));
 
-// ✅ Home page route
+// ✅ Root route to serve index.html from cozastore
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'cozastore', 'index.html'));
 });
 
-// ✅ Login page route (optional clean URL)
-app.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'login.html'));
-});
+// for login page
+// ✅ Serve static files from 'public/'
+app.use(express.static(path.join(__dirname, 'public')));
+
+// ✅ Root route to serve index.html from cozastore
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public','login.html'));
+
 
 // ✅ Connect to MongoDB Atlas
 mongoose.connect(process.env.MONGO_URI, {

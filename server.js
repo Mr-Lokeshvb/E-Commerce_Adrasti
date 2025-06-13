@@ -20,7 +20,7 @@ app.use('/api/customer', customerRoutes);
 app.use('/api/business', sellerRoutes);
 
 // ✅ Serve static files from 'public/cozastore'
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public','cozastore')));
 
 // ✅ Root route to serve index.html from cozastore
 app.get('/', (req, res) => {

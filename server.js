@@ -27,6 +27,15 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'cozastore', 'index.html'));
 });
 
+// for login page
+// ✅ Serve static files from 'public/'
+app.use(express.static(path.join(__dirname, 'public')));
+
+// ✅ Root route to serve index.html from cozastore
+//app.get('/', (req, res) => {
+  //res.sendFile(path.join(__dirname, 'public','index.html'));
+
+
 // ✅ Connect to MongoDB Atlas
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,

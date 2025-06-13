@@ -1,3 +1,5 @@
+const BASE_URL = "https://e-commerce-adrasti.onrender.com";
+
 document.addEventListener("DOMContentLoaded", () => {
   const customerFormOpenBtn = document.querySelector("#customer-form-open");
   const sellerFormOpenBtn = document.querySelector("#seller-form-open");
@@ -82,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const password = customerLoginForm.querySelector("input[name='password']").value;
 
     try {
-      const res = await fetch("http://localhost:5000/api/customer/login", {
+      const res = await fetch(`${BASE_URL}/api/customer/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -118,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/customer/register", {
+      const res = await fetch(`${BASE_URL}/api/customer/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, email, password }),
@@ -162,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/business/register", {
+      const res = await fetch(`${BASE_URL}/api/business/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -193,7 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const password = sellerLoginForm.querySelector("input[name='password']").value;
 
     try {
-      const res = await fetch("http://localhost:5000/api/business/login", {
+      const res = await fetch(`${BASE_URL}/api/business/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

@@ -1,8 +1,9 @@
+// server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
-require('dotenv').config(); // Make sure this is at the top
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -11,7 +12,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// ✅ Debug Mongo URI (optional, for troubleshooting)
+// ✅ Debug Mongo URI (optional)
 console.log("🧪 Connecting to MongoDB using URI:", process.env.MONGO_URI);
 
 // ✅ Connect to MongoDB Atlas

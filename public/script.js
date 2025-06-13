@@ -12,56 +12,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const pwShowHide = document.querySelectorAll(".pw_hide");
 
-  // ===== UI Show/Hide Logic =====
-  customerFormOpenBtn.addEventListener("click", () => {
+  function hideAllForms() {
+    document.querySelectorAll(".form").forEach((form) => {
+      form.style.display = "none";
+    });
+  }
+
+  // UI Form Controls
+  customerFormOpenBtn?.addEventListener("click", () => {
     home.classList.add("show");
     hideAllForms();
     document.querySelector(".login_form").style.display = "block";
   });
 
-  sellerFormOpenBtn.addEventListener("click", () => {
+  sellerFormOpenBtn?.addEventListener("click", () => {
     home.classList.add("show");
     hideAllForms();
     document.querySelector(".seller_login_form").style.display = "block";
   });
 
-  formCloseBtn.addEventListener("click", () => {
+  formCloseBtn?.addEventListener("click", () => {
     home.classList.remove("show");
     hideAllForms();
   });
 
-  customerSignupBtn.addEventListener("click", (e) => {
+  customerSignupBtn?.addEventListener("click", (e) => {
     e.preventDefault();
     hideAllForms();
     document.querySelector(".customer_signup_form").style.display = "block";
   });
 
-  customerLoginBtn.addEventListener("click", (e) => {
+  customerLoginBtn?.addEventListener("click", (e) => {
     e.preventDefault();
     hideAllForms();
     document.querySelector(".login_form").style.display = "block";
   });
 
-  sellerSignupBtn.addEventListener("click", (e) => {
+  sellerSignupBtn?.addEventListener("click", (e) => {
     e.preventDefault();
     hideAllForms();
     document.querySelector(".seller_signup_form").style.display = "block";
   });
 
-  sellerLoginBtn.addEventListener("click", (e) => {
+  sellerLoginBtn?.addEventListener("click", (e) => {
     e.preventDefault();
     hideAllForms();
     document.querySelector(".seller_login_form").style.display = "block";
   });
 
-  function hideAllForms() {
-    const forms = document.querySelectorAll(".form");
-    forms.forEach((form) => {
-      form.style.display = "none";
-    });
-  }
-
-  // ===== Password Show/Hide =====
+  // Show/Hide Password
   pwShowHide.forEach((icon) => {
     icon.addEventListener("click", () => {
       const pwInput = icon.parentElement.querySelector("input");
@@ -77,9 +76,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ===== Customer Login =====
   const customerLoginForm = document.getElementById("customerLoginForm");
-  customerLoginForm.addEventListener("submit", async (e) => {
+  customerLoginForm?.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const email = customerLoginForm.querySelector("input[name='email']").value;
+    const email = customerLoginForm.querySelector("input[name='email']").value.trim();
     const password = customerLoginForm.querySelector("input[name='password']").value;
 
     try {
@@ -88,7 +87,9 @@ document.addEventListener("DOMContentLoaded", () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
+
       const data = await res.json();
+
       if (res.ok) {
         localStorage.setItem("username", data.username || data.email);
         window.location.href = "/cozastore/index.html";
@@ -96,62 +97,58 @@ document.addEventListener("DOMContentLoaded", () => {
         alert(data.message || "Login failed");
       }
     } catch (err) {
-      console.error(err);
-      alert("Server error");
+      console.error("Customer login error:", err);
+      alert("Server error. Please try again.");
     }
   });
 
   // ===== Customer Signup =====
-  // ===== Customer Signup =====
-const customerSignupForm = document.getElementById("customerSignupForm");
+  const customerSignupForm = document.getElementById("customerSignupForm");
+  customerSignupForm?.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-customerSignupForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
+    const username = customerSignupForm.querySelector("input[name='username']").value.trim();
+    const email = customerSignupForm.querySelector("input[name='email']").value.trim();
+    const password = customerSignupForm.querySelector("input[name='password']").value;
+    const confirmPassword = customerSignupForm.querySelector("input[name='confirmPassword']").value;
 
-  const username = customerSignupForm.querySelector("input[name='username']").value;
-  const email = customerSignupForm.querySelector("input[name='email']").value;
-  const password = customerSignupForm.querySelector("input[name='password']").value;
-  const confirmPassword = customerSignupForm.querySelector("input[name='confirmPassword']").value;
-
-  if (password !== confirmPassword) {
-    alert("Passwords do not match");
-    return;
-  }
-console.log({ username, email, password, confirmPassword });
-
-  try {
-    const res = await fetch("http://localhost:5000/api/customer/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, email, password }),
-    });
-
-    const data = await res.json();
-
-    if (res.ok) {
-      alert("Customer registered successfully");
-      customerSignupForm.reset();
-      hideAllForms(); // Optional: hide signup and show login
-      document.querySelector(".login_form").style.display = "block";
-    } else {
-      alert(data.message || "Registration failed");
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
     }
-  } catch (err) {
-    alert("Server error");
-    console.error(err);
-  }
-});
 
+    try {
+      const res = await fetch("http://localhost:5000/api/customer/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, email, password }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        alert("Customer registered successfully");
+        customerSignupForm.reset();
+        hideAllForms();
+        document.querySelector(".login_form").style.display = "block";
+      } else {
+        alert(data.message || "Registration failed");
+      }
+    } catch (err) {
+      console.error("Customer signup error:", err);
+      alert("Server error. Please try again.");
+    }
+  });
 
   // ===== Seller Signup =====
   const sellerSignupForm = document.getElementById("sellerSignupForm");
-  sellerSignupForm.addEventListener("submit", async (e) => {
+  sellerSignupForm?.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const inputs = sellerSignupForm.querySelectorAll("input[name], select[name]");
     const payload = {};
     inputs.forEach((input) => {
-      payload[input.name] = input.value;
+      payload[input.name] = input.value.trim();
     });
 
     if (payload.password !== payload.confirmPassword) {
@@ -170,7 +167,9 @@ console.log({ username, email, password, confirmPassword });
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
+
       const data = await res.json();
+
       if (res.ok) {
         alert("Seller registered successfully");
         sellerSignupForm.reset();
@@ -180,15 +179,17 @@ console.log({ username, email, password, confirmPassword });
         alert(data.message || "Registration failed");
       }
     } catch (err) {
-      alert("Server error");
+      console.error("Seller signup error:", err);
+      alert("Server error. Please try again.");
     }
   });
 
   // ===== Seller Login =====
   const sellerLoginForm = document.getElementById("sellerLoginForm");
-  sellerLoginForm.addEventListener("submit", async (e) => {
+  sellerLoginForm?.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const email = sellerLoginForm.querySelector("input[name='email']").value;
+
+    const email = sellerLoginForm.querySelector("input[name='email']").value.trim();
     const password = sellerLoginForm.querySelector("input[name='password']").value;
 
     try {
@@ -197,7 +198,9 @@ console.log({ username, email, password, confirmPassword });
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
+
       const data = await res.json();
+
       if (res.ok) {
         localStorage.setItem("username", data.username || data.email);
         window.location.href = "/cozastore/index.html";
@@ -205,7 +208,8 @@ console.log({ username, email, password, confirmPassword });
         alert(data.message || "Login failed");
       }
     } catch (err) {
-      alert("Server error");
+      console.error("Seller login error:", err);
+      alert("Server error. Please try again.");
     }
   });
 });

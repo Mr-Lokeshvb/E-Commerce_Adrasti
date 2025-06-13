@@ -13,24 +13,29 @@ app.use(express.json());
 
 // Import routes
 const customerRoutes = require('./backend/routes/customerRoutes');
-const sellerRoutes = require('./backend/routes/sellerRoutes'); // ✅ Add this
+const sellerRoutes = require('./backend/routes/sellerRoutes');
 
 // Use routes
 app.use('/api/customer', customerRoutes);
-app.use('/api/business', sellerRoutes); // ✅ Add this
+app.use('/api/business', sellerRoutes);
 
-// Serve static files
-app.use(express.static(path.join(__dirname, 'public')));
+// ✅ Serve static files from 'public/cozastore'
+app.use(express.static(path.join(__dirname, 'public', 'cozastore')));
 
-// MongoDB connection
+// ✅ Root route to serve index.html from cozastore
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'cozastore', 'index.html'));
+});
+
+// ✅ Connect to MongoDB Atlas
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.error("MongoDB error:", err));
+  .then(() => console.log("✅ MongoDB connected"))
+  .catch((err) => console.error("❌ MongoDB connection error:", err));
 
-// Start server
+// ✅ Start server
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
 });

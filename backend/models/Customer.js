@@ -10,4 +10,4 @@ const customerSchema = new mongoose.Schema({
 
 module.exports = mongoose.model("Customer", customerSchema);
 
-lokesh kenakoo
+lokesh kenakooo
